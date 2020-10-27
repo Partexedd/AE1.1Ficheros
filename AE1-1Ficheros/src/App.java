@@ -21,14 +21,18 @@ public class App {
         // Actividad 2
         FileReader fileReader = new FileReader(file);
         BufferedReader reader = new BufferedReader(fileReader);
-        String line;
+        String line = null;
         int total = 0;
+        long starTimeLectura = System.currentTimeMillis();
         try {
             while ((line = reader.readLine()) != null) {
                 total += Integer.parseInt(line);
             }
         } catch (Exception NumberFormatException) {
+            System.out.println(line);
         }
+        long endTimeLectura = System.currentTimeMillis();
+        System.out.println(MessageFormat.format("El proceso de Lectura ha tardado {0}", (endTimeLectura - starTimeLectura)+" ms"));
         System.out.println(total);
         reader.close();
     }
